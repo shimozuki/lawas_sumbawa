@@ -73,7 +73,7 @@ class _DetailsPageState extends State<DetailsPage> {
         appBar: AppBar(
           title: Text(
             '',
-            style: GoogleFonts.plusJakartaSans(
+            style: GoogleFonts.playfairDisplay(
               fontSize: 20,
               fontWeight: FontWeight.w500,
               height: 1.3325,
@@ -111,7 +111,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   margin: EdgeInsets.fromLTRB(0, 0, 1, 29),
                   child: Text(
                     'Halaman 1',
-                    style: GoogleFonts.plusJakartaSans(
+                    style: GoogleFonts.playfairDisplay(
                       fontSize: 28,
                       fontWeight: FontWeight.w500,
                       height: 1.3325,
@@ -137,9 +137,9 @@ class _DetailsPageState extends State<DetailsPage> {
                           maxWidth: 318,
                         ),
                         child: Text(
-                          'Ajan aku dadi jangi \n \n ya ku ngawang mara pio \n \n metokal adik kuleno \n \n \n \n durianku sengkaeh manis \n \n kadu kutibar ke ate \n \n no antanku sayang adik \n \n \n \n kutembok nyir tua satungkap \n \n kutembok angkang ano tawi \n \n kutunt ku tuntet jangka ada jangi \n \n \n \n jangi apapo jangi ta \n \n btarepa mara lalat \n \n yaku mimpat po kakendung. \n \n \n \n pio ijo lete mega \n \n satekusa sai nyawa \n \n ling sopo sifat ku ke adik \n \n \n \n sai sate nyaman mate \n \n laga lalo rembet sembahyang \n \nlema nyaman nyawa lalo \n \n \n \n nyawalalo bilin tubuh \n \n renduk nangisling potoban \n \n masi po asi dunia \n \n \n \n dunia mara den maman \n \n kupajelek sajan nyaman \n \n loba bilo umir ku gamana',
+                          'The infection comes as fever at night. If you take ill, watch the veins— the tributary of blood travelling down the arms. If they remain as they ever did, you have nothing to fear. \n\nIf the blood darkens to an inky black, the infection has taken hold. \n\nThe infection comes as fever at night.',
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.plusJakartaSans(
+                          style: GoogleFonts.playfairDisplay(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             height: 1.7142857143,
@@ -155,7 +155,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   width: double.infinity,
                   child: RichText(
                     text: TextSpan(
-                      style: GoogleFonts.plusJakartaSans(
+                      style: GoogleFonts.playfairDisplay(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                         height: 1.5,
@@ -164,7 +164,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       children: [
                         TextSpan(
                           text:
-                              'The Never Land adalah tempat yang indah. Ada peri yang hidup di puncak pohon dan putri duyung berenang di laguna. Ada orang Indian merah asli di sebuah desa di tebing dan hutan penuh binatang liar. Yang terbaik dari semuanya, ada kapal-kapal penuh perompak dengan pemimpin yang sangat jahat, Kapten Hook.\n \n Wendy, John, dan Michael tahu pada pandangan pertama bahwa mereka akan mencintai Never Land. Mereka menyukai rumah bawah tanah Peter, dengan banyak pintu tersembunyi di pohon berlubang besar. Di sana mereka bertemu the Lost Boys yang berbagi rumah dengan Peter.\n \n Semua anak lelaki senang bahwa Wendy datang untuk menceritakan kisah pengantar tidur kepada mereka, tetapi mereka tidak menghabiskan banyak waktu di rumah bawah tanah itu. Ada terlalu banyak hal menarik untuk dilakukan. \n \n Kadang-kadang mereka bermain perang dengan orang-orang Indian merah, yang adalah teman baik mereka. Kadang-kadang mereka memiliki masalah dengan para perompak yang jahat, yang adalah musuh mereka. \n \n Suatu hari para perompak mencuri Putri Tiger Lily dari suku Indian. Kepala India, ayahnya, sangat kesal tetapi Peter Pan menyelamatkan Tiger Lily dan membawanya pulang dengan selamat. \n \n Ini membuat Kapten Hook, pemimpin bajak laut marah pada Peter, lebih dari sebelumnya.\n \n Dia menculik Wendy, John, Michael dan the lost boys ketika Peter pergi. Dia membawa mereka ke kapalnya. \n \n Hook memutuskan untuk membuangnya dari kapal. Wendy yakin bahwa Peter akan menyelamatkan mereka. Pada menit terakhir, Peter muncul. \n \n Dia mengalahkan Kapten Hook dan membebaskan semua temannya. Mereka menakuti para perompak jahat itu untuk melompat ke laut dan mendayung pergi dengan perahu mereka.\n \n Sekarang, mereka mendapatkan kapal bajak laut. Wendy memutuskan untuk pulang. Dengan harapan dan sedikit debu peri, mereka membuat kapal bajak laut itu terbang! Mereka semua berlayar di kapal itu melalui langit ke jendela kamar anak lagi. \n \n Orang tua anak-anak hampir tidak percaya bahwa anak-anak mereka pernah ke Never Land. Wendy, John, dan Michael tidak pernah melupakan Peter Pan bahkan setelah mereka dewasa.  \n \n',
+                              'Ajan aku dadi jangi \n ya ku ngawang mara pio \n  metokal adik kuleno \n \n durianku sengkaeh manis \n  kadu kutibar ke ate \n no antanku sayang adik \n \n kutembok nyir tua satungkap \n  kutembok angkang ano tawi \n  kutunt ku tuntet jangka ada jangi \n \n jangi apapo jangi ta \n  btarepa mara lalat \n  yaku mimpat po kakendung. \n \n pio ijo lete mega \n  satekusa sai nyawa \n  ling sopo sifat ku ke adik \n \n sai sate nyaman mate \n laga lalo rembet sembahyang \n lema nyaman nyawa lalo \n \n nyawalalo bilin tubuh \n renduk nangisling potoban \n masi po asi dunia \n \n dunia mara den maman \n kupajelek sajan nyaman \n loba bilo umir ku gamana',
                         ),
                         WidgetSpan(
                           child: SizedBox(height: 16),
@@ -260,7 +260,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     child: Center(
                       child: Text(
                         'Video',
-                        style: GoogleFonts.plusJakartaSans(
+                        style: GoogleFonts.playfairDisplay(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
                           height: 1.1725,
