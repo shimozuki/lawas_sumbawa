@@ -110,7 +110,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   // chapteroneaEX (10:1169)
                   margin: EdgeInsets.fromLTRB(0, 0, 1, 29),
                   child: Text(
-                    'Chapter One',
+                    'Halaman 1',
                     style: GoogleFonts.plusJakartaSans(
                       fontSize: 28,
                       fontWeight: FontWeight.w500,
@@ -137,7 +137,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           maxWidth: 318,
                         ),
                         child: Text(
-                          'The infection comes as fever at night. If you take ill, watch the veins— the tributary of blood travelling down the arms. If they remain as they ever did, you have nothing to fear. \n\nIf the blood darkens to an inky black, the infection has taken hold. \n\nThe infection comes as fever at night.',
+                          'Ajan aku dadi jangi \n \n ya ku ngawang mara pio \n \n metokal adik kuleno \n \n \n \n durianku sengkaeh manis \n \n kadu kutibar ke ate \n \n no antanku sayang adik \n \n \n \n kutembok nyir tua satungkap \n \n kutembok angkang ano tawi \n \n kutunt ku tuntet jangka ada jangi \n \n \n \n jangi apapo jangi ta \n \n btarepa mara lalat \n \n yaku mimpat po kakendung. \n \n \n \n pio ijo lete mega \n \n satekusa sai nyawa \n \n ling sopo sifat ku ke adik \n \n \n \n sai sate nyaman mate \n \n laga lalo rembet sembahyang \n \nlema nyaman nyawa lalo \n \n \n \n nyawalalo bilin tubuh \n \n renduk nangisling potoban \n \n masi po asi dunia \n \n \n \n dunia mara den maman \n \n kupajelek sajan nyaman \n \n loba bilo umir ku gamana',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.plusJakartaSans(
                             fontSize: 14,
