@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lawas_sumbawa/component/footer_bar.dart';
+import 'package:lawas_sumbawa/pages/about_screen.dart';
 import 'package:lawas_sumbawa/pages/home_page.dart';
 import 'package:lawas_sumbawa/pages/upload_screen.dart';
 
@@ -29,10 +30,10 @@ class _VideoState extends State<Video> {
         MaterialPageRoute(builder: (context) => const Upload()),
       );
     } else if (_selectedIndex == 3) {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const About()),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const About()),
+      );
     }
   }
   @override

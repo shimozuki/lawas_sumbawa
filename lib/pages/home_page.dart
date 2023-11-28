@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lawas_sumbawa/component/footer_bar.dart';
 import 'package:lawas_sumbawa/model/book_model.dart';
+import 'package:lawas_sumbawa/pages/about_screen.dart';
 import 'package:lawas_sumbawa/pages/upload_screen.dart';
 import 'package:lawas_sumbawa/pages/vidio_page.dart';
 
@@ -42,10 +43,10 @@ class _HomePageState extends State<HomePage>
         MaterialPageRoute(builder: (context) => const Upload()),
       );
     } else if (_selectedIndex == 3) {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const About()),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const About()),
+      );
     }
   }
 

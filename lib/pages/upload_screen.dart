@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:lawas_sumbawa/component/footer_bar.dart';
+import 'package:lawas_sumbawa/pages/about_screen.dart';
 import 'package:lawas_sumbawa/pages/home_page.dart';
 import 'package:lawas_sumbawa/pages/vidio_page.dart';
 
@@ -37,10 +38,10 @@ class _UploadState extends State<Upload> {
         MaterialPageRoute(builder: (context) => HomePage()),
       );
     } else if (_selectedIndex == 3) {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const About()),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const About()),
+      );
     }
   }
   final _formKey = GlobalKey<FormState>();
