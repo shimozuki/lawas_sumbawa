@@ -1,7 +1,10 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:lawas_sumbawa/component/footer_bar.dart';
 import 'package:lawas_sumbawa/model/book_model.dart';
+import 'package:lawas_sumbawa/pages/upload_screen.dart';
+import 'package:lawas_sumbawa/pages/vidio_page.dart';
 
 import '../common.dart';
 import 'new_tab_widget.dart';
@@ -20,6 +23,30 @@ class _HomePageState extends State<HomePage>
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+  }
+
+  int _selectedIndex = 0;
+
+  void _onTabTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    if (_selectedIndex == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Video()),
+      );
+    } else if (_selectedIndex == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Upload()),
+      );
+    } else if (_selectedIndex == 3) {
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => const About()),
+      // );
+    }
   }
 
   @override
@@ -48,8 +75,8 @@ class _HomePageState extends State<HomePage>
               unselectedLabelStyle: TextStyle(color: Colors.grey[500]),
               unselectedLabelColor: Colors.grey[500],
               labelColor: Color(0xFF9CCC65),
-              labelStyle:
-                  TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF9CCC65)),
+              labelStyle: TextStyle(
+                  fontWeight: FontWeight.bold, color: Color(0xFF9CCC65)),
               isScrollable: true,
               labelPadding: EdgeInsets.only(left: 0, right: 20),
               tabs: [
@@ -58,7 +85,9 @@ class _HomePageState extends State<HomePage>
                 _tabWidget("Tau Loka"),
               ],
             ),
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             Flexible(
                 child: Container(
               child: TabBarView(controller: _tabController, children: [
@@ -69,6 +98,10 @@ class _HomePageState extends State<HomePage>
             ))
           ],
         ),
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTabTapped: _onTabTapped,
       ),
     );
   }
