@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:lawas_sumbawa/component/footer_bar.dart';
 import 'package:lawas_sumbawa/model/book_model.dart';
 import 'package:lawas_sumbawa/pages/about_screen.dart';
+import 'package:lawas_sumbawa/pages/lawas_aherat.dart';
+import 'package:lawas_sumbawa/pages/lawas_dunia.dart';
+import 'package:lawas_sumbawa/pages/nyorong.dart';
+import 'package:lawas_sumbawa/pages/sejarah.dart';
 import 'package:lawas_sumbawa/pages/upload_screen.dart';
 import 'package:lawas_sumbawa/pages/vidio_page.dart';
 
@@ -23,7 +27,7 @@ class _HomePageState extends State<HomePage>
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   int _selectedIndex = 0;
@@ -35,7 +39,7 @@ class _HomePageState extends State<HomePage>
     if (_selectedIndex == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Video()),
+        MaterialPageRoute(builder: (context) => Sejarah()),
       );
     } else if (_selectedIndex == 2) {
       Navigator.push(
@@ -81,9 +85,10 @@ class _HomePageState extends State<HomePage>
               isScrollable: true,
               labelPadding: EdgeInsets.only(left: 0, right: 20),
               tabs: [
-                _tabWidget("Tau Ode"),
-                _tabWidget("Taruna Dadara"),
-                _tabWidget("Tau Loka"),
+                _tabWidget("Lawas Dunia"),
+                _tabWidget("Lawas Aherat"),
+                _tabWidget("Lawas Nyorong"),
+                _tabWidget("Lawas Husus"),
               ],
             ),
             SizedBox(
@@ -92,9 +97,10 @@ class _HomePageState extends State<HomePage>
             Flexible(
                 child: Container(
               child: TabBarView(controller: _tabController, children: [
+                Dunia(),
+                Lawasaherat(),
+                Nyorong(),
                 NewTabWidget(),
-                Container(),
-                Container(),
               ]),
             ))
           ],

@@ -22,11 +22,11 @@ class MyBottomNavigationBar extends StatelessWidget {
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.video_library),
-          label: 'Vidio',
+          icon: Icon(Icons.receipt_long),
+          label: 'Sejarah',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.book),
+          icon: Icon(Icons.upload_file_rounded),
           label: 'Upload',
         ),
         BottomNavigationBarItem(

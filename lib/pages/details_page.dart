@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:lawas_sumbawa/model/book_model.dart';
-// import 'package:story_book/page/quiz/quiz_screen.dart';
-// import 'package:story_book/page/quiz_screen.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage(BookModel model, {super.key});
@@ -14,7 +13,6 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-
   final AssetsAudioPlayer audioPlayer = AssetsAudioPlayer();
 
   @override
@@ -22,7 +20,7 @@ class _DetailsPageState extends State<DetailsPage> {
     super.initState();
 
     audioPlayer.open(
-      Audio('assets/images/story.mp3'),
+      Audio('assets/audio.mp3'),
       autoStart: false,
       showNotification: true,
     );
@@ -136,14 +134,19 @@ class _DetailsPageState extends State<DetailsPage> {
                         constraints: BoxConstraints(
                           maxWidth: 318,
                         ),
-                        child: Text(
-                          'The infection comes as fever at night. If you take ill, watch the veins— the tributary of blood travelling down the arms. If they remain as they ever did, you have nothing to fear. \n\nIf the blood darkens to an inky black, the infection has taken hold. \n\nThe infection comes as fever at night.',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            height: 1.7142857143,
-                            color: Color(0xff000000),
+                        child: YoutubePlayer(
+                          controller: YoutubePlayerController(
+                            initialVideoId: 'B1ynOvECPOA',
+                            flags: YoutubePlayerFlags(
+                              autoPlay: false,
+                              mute: false,
+                            ),
+                          ),
+                          showVideoProgressIndicator: true,
+                          progressIndicatorColor: Color(0xFF9CCC65),
+                          progressColors: ProgressBarColors(
+                            playedColor: Color(0xFF9CCC65),
+                            handleColor: Color(0xFF9CCC65),
                           ),
                         ),
                       ),
