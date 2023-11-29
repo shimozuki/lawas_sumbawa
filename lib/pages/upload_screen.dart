@@ -22,6 +22,13 @@ class Upload extends StatefulWidget {
 
 class _UploadState extends State<Upload> {
   int _selectedIndex = 2;
+  int _groupId = 1;
+
+   void _handleDropdownChanged(int? value) {
+    setState(() {
+      _groupId = value!;
+    });
+  }
 
   void _onTabTapped(int index) {
     setState(() {
@@ -314,7 +321,86 @@ class _UploadState extends State<Upload> {
                                     width: 24,
                                     height: 24,
                                     child: const Icon(
-                                      Icons.book,
+                                      Icons.receipt_long,
+                                      color: Color.fromARGB(78, 0, 0, 0),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin:
+                                      const EdgeInsets.fromLTRB(34, 0, 0, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                  child: DropdownButtonFormField(
+                                    decoration: const InputDecoration.collapsed(
+                                        hintText: ''),
+                                    hint: const Icon(Icons.language),
+                                    value: _groupId,
+                                    validator: (value) => value == null
+                                        ? "Kategori Lawas"
+                                        : null,
+                                    dropdownColor: const Color.fromARGB(
+                                        255, 245, 238, 238),
+                                    items: const [
+                                      DropdownMenuItem(
+                                        value: 1,
+                                        child: Text(
+                                          "Lawas Dunia",
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ),
+                                      DropdownMenuItem(
+                                        value: 2,
+                                        child: Text(
+                                          "Lawas Aherat",
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ),
+                                      DropdownMenuItem(
+                                        value: 3,
+                                        child: Text(
+                                          "Lawas Husus",
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ),
+                                      DropdownMenuItem(
+                                        value: 4,
+                                        child: Text(
+                                          "Lawas Nyorong",
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ),
+                                    ],
+                                    onChanged: _handleDropdownChanged,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 18),
+                          padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: const Color(0x11000000),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Container(
+                            width: 134,
+                            height: double.infinity,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Container(
+                                    margin: const EdgeInsets.fromLTRB(
+                                        0, 2.5, 399, 0),
+                                    width: 24,
+                                    height: 24,
+                                    child: const Icon(
+                                      Icons.attach_file,
                                       color: Color.fromARGB(78, 0, 0, 0),
                                     ),
                                   ),
@@ -326,7 +412,7 @@ class _UploadState extends State<Upload> {
                                       const EdgeInsets.fromLTRB(0, 0, 0, 5),
                                   child: TextFormField(
                                     decoration: const InputDecoration.collapsed(
-                                      hintText: "Judul Lawas",
+                                      hintText: "Link Vidio (youtube)",
                                     ),
                                     validator: (value) {
                                       if (value == null ||
@@ -337,6 +423,41 @@ class _UploadState extends State<Upload> {
                                     },
                                     // onChanged: (value) =>
                                     //     _nama_perusahaan = value,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 18),
+                          padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: const Color(0x11000000),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: GestureDetector(
+                            onTap: _pickFile,
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin:
+                                      const EdgeInsets.fromLTRB(0, 2.5, 10, 0),
+                                  width: 24,
+                                  height: 24,
+                                  child: const Icon(
+                                    Icons.audio_file,
+                                    color: Color.fromARGB(78, 0, 0, 0),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    _selectedFilePath != null
+                                        ? _selectedFilePath!
+                                        : "Choose a Audio",
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ],
