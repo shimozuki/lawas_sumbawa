@@ -107,8 +107,7 @@ class _DetailsPageState extends State<DetailsPage> {
               labelColor: Color(0xFF9CCC65),
               labelStyle: TextStyle(
                   fontWeight: FontWeight.bold, color: Color(0xFF9CCC65)),
-              isScrollable: true,
-              labelPadding: EdgeInsets.only(left: 0, right: 20),
+              labelPadding: EdgeInsets.only(left: 0, right: MediaQuery.of(context).size.width * 0.1),
               tabs: [
                 Tab(
                   text: 'Bahas Sumbawa',
