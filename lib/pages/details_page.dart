@@ -6,7 +6,8 @@ import 'package:lawas_sumbawa/model/book_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage(BookModel model, {super.key});
+  final int Id;
+  const DetailsPage(this.Id, {Key? key}) : super(key: key);
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -107,7 +108,8 @@ class _DetailsPageState extends State<DetailsPage> {
               labelColor: Color(0xFF9CCC65),
               labelStyle: TextStyle(
                   fontWeight: FontWeight.bold, color: Color(0xFF9CCC65)),
-              labelPadding: EdgeInsets.only(left: 0, right: MediaQuery.of(context).size.width * 0.1),
+              labelPadding: EdgeInsets.only(
+                  left: 0, right: MediaQuery.of(context).size.width * 0.1),
               tabs: [
                 Tab(
                   text: 'Bahas Sumbawa',

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lawas_sumbawa/component/footer_bar.dart';
+import 'package:lawas_sumbawa/controller/Sejarah_controller.dart';
+import 'package:lawas_sumbawa/model/about_model.dart';
 import 'package:lawas_sumbawa/pages/about_screen.dart';
 import 'package:lawas_sumbawa/pages/home_page.dart';
 import 'package:lawas_sumbawa/pages/upload_screen.dart';
@@ -14,7 +16,26 @@ class Sejarah extends StatefulWidget {
 }
 
 class _SejarahState extends State<Sejarah> {
+  final SejarahController _SejarahController = SejarahController();
+  late String description;
    int _selectedIndex = 1;
+
+   @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    try {
+      final AboutModel lawasData = await _SejarahController.fetchAboutData();
+      setState(() {
+        description = lawasData.description;
+      });
+    } catch (e) {
+      print('Error fetching data: $e');
+    }
+  }
 
   void _onTabTapped(int index) {
     setState(() {
@@ -99,7 +120,7 @@ class _SejarahState extends State<Sejarah> {
                           maxWidth: 318,
                         ),
                         child: Text(
-                          'Lawas yang kita kenal sejak dahulu hingga sekarang ini tidak dimiliki oleh perorangan tetapi merupakan milik bersama turun-temurun.\nAhli lawas menurunkan kepada anak cucunya secara lisan. Lawas itu tidak ditulis dalam buku khusus.\nKalaupun dulu kita kenal Bumung (lembaran daun lontar tertulis disimpan dalam tabung bambu) kebanyakan isinya, lawas tutir (cerita), silsilah dan sejarah pahlawan sakti yang ditulis dengan satera jontal (tulisan lontar) mirip dengan aksara suku Bugis/Makasar.\nAksara jontal ini merupakan huruf khas suku Sumbawa yang pada zaman mutakhir ini hampir sirna.\nLawas ialah ciptaan manusia yang dilahirkan  dan dinyatakan dengan bahasa, baik lisan maupun tulisan yang menimbulkan rasa keindahan dan keharuan dalam lubuk jiwa manusia.',
+                          description,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.playfairDisplay(
                             fontSize: 14,

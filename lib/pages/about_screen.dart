@@ -8,6 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 // import 'package:provider/provider.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lawas_sumbawa/component/footer_bar.dart';
+import 'package:lawas_sumbawa/controller/About_controller.dart';
+import 'package:lawas_sumbawa/model/about_model.dart';
 import 'package:lawas_sumbawa/pages/home_page.dart';
 import 'package:lawas_sumbawa/pages/upload_screen.dart';
 import 'package:lawas_sumbawa/pages/vidio_page.dart';
@@ -23,6 +25,25 @@ class About extends StatefulWidget {
 class _AboutState extends State<About> {
   bool isAddButtonClicked = false;
   int _selectedIndex = 3;
+  final AboutController _AboutController = AboutController();
+  late String description;
+
+   @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    try {
+      final AboutModel lawasData = await _AboutController.fetchAboutData();
+      setState(() {
+        description = lawasData.description;
+      });
+    } catch (e) {
+      print('Error fetching data: $e');
+    }
+  }
 
   void _onTabTapped(int index) {
     setState(() {
@@ -114,7 +135,7 @@ class _AboutState extends State<About> {
                             children: [
                               TextSpan(
                                 text:
-                                    'Aplikasi Lawas Sumbawa menjadi wadah digital yang memperkaya warisan budaya Indonesia. Dalam aplikasi ini, pengguna dapat menelusuri beragam kisah legendaris yang menggambarkan kekayaan sejarah dan nilai-nilai yang dipegang teguh oleh masyarakat Sumbawa. Dengan menggunakan teknologi modern, aplikasi ini tidak hanya menyajikan teks naratif, tetapi juga memperkaya pengalaman pembaca dengan elemen multimedia, seperti ilustrasi, audio, dan animasi yang memukau. Pengguna dapat menjelajahi mitos-mitos kuno, seperti kisah tentang Pulau Kenawa yang dipercaya sebagai tempat kelahiran Dewi Anjani, atau legenda mengenai awal mula terbentuknya Gunung Tambora yang terkenal. Melalui aplikasi cerita rakyat Sumbawa, kekayaan kultural dan warisan nenek moyang dapat terus hidup dan dihargai oleh generasi modern, sambil mendukung pelestarian dan penyebaran cerita-cerita yang mengandung makna mendalam bagi masyarakat Sumbawa.',
+                                    description,
                                 style: GoogleFonts.plusJakartaSans(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,

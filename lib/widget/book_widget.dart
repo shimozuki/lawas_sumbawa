@@ -12,10 +12,10 @@ class BookWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => DetailsPage(model)));
-      },
+      // onTap: () {
+      //   Navigator.push(
+      //       context, MaterialPageRoute(builder: (context) => DetailsPage(model)));
+      // },
       child: Container(
         margin: EdgeInsets.only(bottom: 10),
         child: Row(
