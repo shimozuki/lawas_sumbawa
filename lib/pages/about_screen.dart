@@ -11,8 +11,8 @@ import 'package:lawas_sumbawa/component/footer_bar.dart';
 import 'package:lawas_sumbawa/controller/About_controller.dart';
 import 'package:lawas_sumbawa/model/about_model.dart';
 import 'package:lawas_sumbawa/pages/home_page.dart';
+import 'package:lawas_sumbawa/pages/sejarah.dart';
 import 'package:lawas_sumbawa/pages/upload_screen.dart';
-import 'package:lawas_sumbawa/pages/vidio_page.dart';
 
 
 class About extends StatefulWidget {
@@ -31,6 +31,7 @@ class _AboutState extends State<About> {
    @override
   void initState() {
     super.initState();
+    description = '';
     fetchData();
   }
 
@@ -52,7 +53,7 @@ class _AboutState extends State<About> {
     if (_selectedIndex == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Video()),
+        MaterialPageRoute(builder: (context) => const Sejarah()),
       );
     } else if (_selectedIndex == 2) {
       Navigator.push(

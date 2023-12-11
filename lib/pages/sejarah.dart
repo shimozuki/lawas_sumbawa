@@ -16,21 +16,29 @@ class Sejarah extends StatefulWidget {
 }
 
 class _SejarahState extends State<Sejarah> {
-  final SejarahController _SejarahController = SejarahController();
-  late String description;
+  late AboutModel _AboutModel;
    int _selectedIndex = 1;
+   late String description;
 
    @override
   void initState() {
     super.initState();
+    _AboutModel = AboutModel(
+      id: 0,
+      description: '',
+      updatedAt: '',
+    );
+    description = '';
     fetchData();
   }
 
   Future<void> fetchData() async {
+    final SejarahController _SejarahController = SejarahController();
     try {
       final AboutModel lawasData = await _SejarahController.fetchAboutData();
       setState(() {
-        description = lawasData.description;
+        _AboutModel = lawasData;
+        description = _AboutModel.description;
       });
     } catch (e) {
       print('Error fetching data: $e');

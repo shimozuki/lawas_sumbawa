@@ -1,13 +1,14 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, unnecessary_null_comparison
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:lawas_sumbawa/model/book_model.dart';
+import 'package:lawas_sumbawa/controller/detail_controller.dart';
+import 'package:lawas_sumbawa/model/detail_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class DetailsPage extends StatefulWidget {
-  final int Id;
-  const DetailsPage(this.Id, {Key? key}) : super(key: key);
+  final int itemId;
+  const DetailsPage(this.itemId, {Key? key}) : super(key: key);
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -15,23 +16,57 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   final AssetsAudioPlayer audioPlayer = AssetsAudioPlayer();
+  late DetaillawasModel detailData;
+  late String link;
 
   @override
   void initState() {
     super.initState();
 
-    audioPlayer.open(
-      Audio('assets/audio.mp3'),
-      autoStart: false,
-      showNotification: true,
+    detailData = DetaillawasModel(
+      id: 0,
+      mainTitle: '',
+      lirikIndo: '',
+      linkYoutube: '',
+      lirikSwq: '',
+      image: '',
+      audio: '',
+      hitCount: 0,
     );
-    audioPlayer.play();
+
+    fetchData();
   }
 
   @override
   void dispose() {
     audioPlayer.dispose();
     super.dispose();
+  }
+
+  Future<void> fetchData() async {
+    final DetailController detailController = DetailController();
+    final int itemId = widget.itemId;
+
+    try {
+      final DetaillawasModel data =
+          await detailController.fetchDataById(itemId);
+      setState(() {
+        detailData = data;
+        link = detailData.linkYoutube;
+      });
+
+      if (detailData.audio.isNotEmpty) {
+        audioPlayer.open(
+          Audio.network('https://lombokfuntransport.com/lawas_backoffice/${detailData.audio}'),
+          autoStart: false,
+          showNotification: true,
+        );
+        print('datanya : ${detailData.mainTitle}');
+        audioPlayer.play();
+      }
+    } catch (error) {
+      print('Error fetching data: $error');
+    }
   }
 
   // Fungsi untuk memainkan atau menghentikan audio
@@ -42,28 +77,6 @@ class _DetailsPageState extends State<DetailsPage> {
       audioPlayer.play();
     }
   }
-
-  // void _onTabTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  //   if (_selectedIndex == 1) {
-  //     Navigator.push(
-  //       context,
-  //       MaterialPageRoute(builder: (context) => const Home()),
-  //     );
-  //   } else if (_selectedIndex == 2) {
-  //     Navigator.push(
-  //       context,
-  //       MaterialPageRoute(builder: (context) => const Home()),
-  //     );
-  //   } else if (_selectedIndex == 3) {
-  //     // Navigator.push(
-  //     //   context,
-  //     //   MaterialPageRoute(builder: (context) => const Akun()),
-  //     // );
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +149,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         // chapteroneaEX (10:1169)
                         margin: EdgeInsets.fromLTRB(0, 0, 1, 29),
                         child: Text(
-                          'Halaman 1',
+                          '${detailData.mainTitle}',
                           style: GoogleFonts.playfairDisplay(
                             fontSize: 28,
                             fontWeight: FontWeight.w500,
@@ -164,7 +177,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               ),
                               child: YoutubePlayer(
                                 controller: YoutubePlayerController(
-                                  initialVideoId: 'B1ynOvECPOA',
+                                  initialVideoId: link,
                                   flags: YoutubePlayerFlags(
                                     autoPlay: false,
                                     mute: false,
@@ -195,7 +208,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             children: [
                               TextSpan(
                                 text:
-                                    'Ajan aku dadi jangi \n ya ku ngawang mara pio \n  metokal adik kuleno \n \n durianku sengkaeh manis \n  kadu kutibar ke ate \n no antanku sayang adik \n \n kutembok nyir tua satungkap \n  kutembok angkang ano tawi \n  kutunt ku tuntet jangka ada jangi \n \n jangi apapo jangi ta \n  btarepa mara lalat \n  yaku mimpat po kakendung. \n \n pio ijo lete mega \n  satekusa sai nyawa \n  ling sopo sifat ku ke adik \n \n sai sate nyaman mate \n laga lalo rembet sembahyang \n lema nyaman nyawa lalo \n \n nyawalalo bilin tubuh \n renduk nangisling potoban \n masi po asi dunia \n \n dunia mara den maman \n kupajelek sajan nyaman \n loba bilo umir ku gamana',
+                                    '${detailData.lirikSwq}',
                               ),
                               WidgetSpan(
                                 child: SizedBox(height: 16),
@@ -222,7 +235,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         // chapteroneaEX (10:1169)
                         margin: EdgeInsets.fromLTRB(0, 0, 1, 29),
                         child: Text(
-                          'Halaman 1',
+                          '${detailData.mainTitle}',
                           style: GoogleFonts.playfairDisplay(
                             fontSize: 28,
                             fontWeight: FontWeight.w500,
@@ -250,7 +263,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               ),
                               child: YoutubePlayer(
                                 controller: YoutubePlayerController(
-                                  initialVideoId: 'B1ynOvECPOA',
+                                  initialVideoId: link,
                                   flags: YoutubePlayerFlags(
                                     autoPlay: false,
                                     mute: false,
@@ -281,7 +294,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             children: [
                               TextSpan(
                                 text:
-                                    'Seandainya Aku Jadi Janji \nAku akan terbang seperti Burung \nmetokal adik kuleno \n \ndurianku sengkaeh manis \nkadu kutibar ke ate \nno antanku sayang adik \n \nkutembok nyir tua satungkap \nkutembok angkang ano tawi \nkutunt ku tuntet jangka ada jangi \n \njangi apapo jangi ta \nbtarepa mara lalat \nyaku mimpat po kakendung. \n \npio ijo lete mega \nsatekusa sai nyawa \nling sopo sifat ku ke adik \n \nsai sate nyaman mate \nlaga lalo rembet sembahyang \n lema nyaman nyawa lalo \n \n nyawalalo bilin tubuh \n renduk nangisling potoban \n masi po asi dunia \n \n dunia mara den maman \n kupajelek sajan nyaman \n loba bilo umir ku gamana',
+                                    '${detailData.lirikIndo}',
                               ),
                               WidgetSpan(
                                 child: SizedBox(height: 16),

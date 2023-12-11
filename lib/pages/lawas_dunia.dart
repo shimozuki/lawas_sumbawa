@@ -5,7 +5,6 @@ import 'package:lawas_sumbawa/controller/lawas_dunia.dart';
 import 'package:lawas_sumbawa/model/lawasdunia_model.dart';
 import 'package:lawas_sumbawa/pages/details_page.dart';
 
-
 class Dunia extends StatefulWidget {
   @override
   _DuniaState createState() => _DuniaState();
@@ -27,7 +26,8 @@ class _DuniaState extends State<Dunia> {
             child: Text('Error: ${snapshot.error}'),
           );
         } else {
-          List<LawasduniaModel> lawasduniaData = snapshot.data as List<LawasduniaModel>;
+          List<LawasduniaModel> lawasduniaData =
+              snapshot.data as List<LawasduniaModel>;
           return Container(
             child: ListView(
               children: <Widget>[
@@ -68,26 +68,29 @@ class _DuniaState extends State<Dunia> {
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: lawasduniaData.length,
                       itemBuilder: (context, index) {
-                       LawasduniaModel model = lawasduniaData[index];
+                        LawasduniaModel model = lawasduniaData[index];
                         return InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DetailsPage(model.id)));
-                                    print(model.id);
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsPage(model.id),
+                              ),
+                            );
+                            print(model.id);
                           },
                           child: Container(
                             margin: EdgeInsets.only(bottom: 10),
                             child: Row(
                               children: <Widget>[
                                 ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8)),
-                                    child: Image.network(
-                                      'https://lombokfuntransport.com/lawas_backoffice/${model.image}',
-                                      width: 70,
-                                    ),),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8)),
+                                  child: Image.network(
+                                    'https://lombokfuntransport.com/lawas_backoffice/${model.image}',
+                                    width: 70,
+                                  ),
+                                ),
                                 SizedBox(
                                   width: 10,
                                 ),

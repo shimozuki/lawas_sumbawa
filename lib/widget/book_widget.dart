@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:lawas_sumbawa/model/book_model.dart';
-import 'package:lawas_sumbawa/pages/details_page.dart';
 
 class BookWidget extends StatelessWidget {
   BookModel model;

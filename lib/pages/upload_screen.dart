@@ -10,6 +10,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:lawas_sumbawa/component/footer_bar.dart';
 import 'package:lawas_sumbawa/pages/about_screen.dart';
 import 'package:lawas_sumbawa/pages/home_page.dart';
+import 'package:lawas_sumbawa/pages/sejarah.dart';
 import 'package:lawas_sumbawa/pages/vidio_page.dart';
 
 
@@ -37,7 +38,7 @@ class _UploadState extends State<Upload> {
     if (_selectedIndex == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Video()),
+        MaterialPageRoute(builder: (context) => const Sejarah()),
       );
     } else if (_selectedIndex == 0) {
       Navigator.push(
