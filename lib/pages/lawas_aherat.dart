@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lawas_sumbawa/controller/lawas_aherat.dart';
 import 'package:lawas_sumbawa/model/lawasdunia_model.dart';
+import 'package:lawas_sumbawa/pages/details_page.dart';
 
 
 class Lawasaherat extends StatefulWidget {
@@ -68,10 +69,12 @@ class _LawasaheratState extends State<Lawasaherat> {
                        LawasduniaModel model = lawasduniaData[index];
                         return InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => DetailsPage(model)));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsPage(model.id),
+                              ),
+                            );
                           },
                           child: Container(
                             margin: EdgeInsets.only(bottom: 10),

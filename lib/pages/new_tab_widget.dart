@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lawas_sumbawa/controller/lawas_husus.dart';
 import 'package:lawas_sumbawa/model/lawasdunia_model.dart';
+import 'package:lawas_sumbawa/pages/details_page.dart';
 
 class NewTabWidget extends StatefulWidget {
   @override
@@ -69,10 +70,12 @@ class _NewTabWidgetState extends State<NewTabWidget> {
                        LawasduniaModel model = lawasduniaData[index];
                         return InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => DetailsPage(model)));
+                             Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsPage(model.id),
+                              ),
+                            );
                           },
                           child: Container(
                             margin: EdgeInsets.only(bottom: 10),

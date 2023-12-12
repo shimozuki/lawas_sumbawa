@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lawas_sumbawa/controller/lawas_controller.dart';
 import 'package:lawas_sumbawa/model/lawas_model.dart';
+import 'package:lawas_sumbawa/pages/details_page.dart';
 
 
 class Nyorong extends StatefulWidget {
@@ -70,10 +71,12 @@ class _NyorongState extends State<Nyorong> {
                        LawasModel model = lawasData[index];
                         return InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => DetailsPage(model)));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsPage(model.id),
+                              ),
+                            );
                           },
                           child: Container(
                             margin: EdgeInsets.only(bottom: 10),
