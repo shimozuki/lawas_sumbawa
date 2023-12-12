@@ -17,7 +17,7 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   final AssetsAudioPlayer audioPlayer = AssetsAudioPlayer();
   late DetaillawasModel detailData;
-  late String link;
+  late String link = '';
 
   @override
   void initState() {
