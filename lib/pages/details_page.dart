@@ -5,6 +5,8 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:lawas_sumbawa/controller/detail_controller.dart';
 import 'package:lawas_sumbawa/model/detail_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatefulWidget {
   final int itemId;
@@ -18,6 +20,8 @@ class _DetailsPageState extends State<DetailsPage> {
   final AssetsAudioPlayer audioPlayer = AssetsAudioPlayer();
   late DetaillawasModel detailData;
   late String link = '';
+  late String modifiedTitle = '';
+  late String indo = '';
 
   @override
   void initState() {
@@ -53,11 +57,16 @@ class _DetailsPageState extends State<DetailsPage> {
       setState(() {
         detailData = data;
         link = detailData.linkYoutube;
+        modifiedTitle =
+            detailData.lirikSwq.replaceAll('.', '\n').replaceAll('..', '\n\n');
+        indo =
+            detailData.lirikIndo.replaceAll('.', '\n').replaceAll('..', '\n\n');
       });
 
       if (detailData.audio.isNotEmpty) {
         audioPlayer.open(
-          Audio.network('https://lombokfuntransport.com/lawas_backoffice/${detailData.audio}'),
+          Audio.network(
+              'https://lombokfuntransport.com/lawas_backoffice/${detailData.audio}'),
           autoStart: false,
           showNotification: true,
         );
@@ -197,6 +206,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 46),
                         width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 1.0,
                         child: RichText(
                           text: TextSpan(
                             style: GoogleFonts.playfairDisplay(
@@ -207,8 +217,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             ),
                             children: [
                               TextSpan(
-                                text:
-                                    '${detailData.lirikSwq}',
+                                text: '${modifiedTitle}',
                               ),
                               WidgetSpan(
                                 child: SizedBox(height: 16),
@@ -283,6 +292,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 46),
                         width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 1.0,
                         child: RichText(
                           text: TextSpan(
                             style: GoogleFonts.playfairDisplay(
@@ -293,8 +303,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             ),
                             children: [
                               TextSpan(
-                                text:
-                                    '${detailData.lirikIndo}',
+                                text: '${indo}',
                               ),
                               WidgetSpan(
                                 child: SizedBox(height: 16),
@@ -325,24 +334,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   InkWell(
                     onTap: () {
-                      // final userProvider =
-                      //     Provider.of<UserProvider>(context, listen: false);
-
-                      // List<Map<String, dynamic>> selectedItems =
-                      //     _template.map((item) {
-                      //   return {
-                      //     "kdBarang": item["kd_barang"],
-                      //     "kdSatuan": item["kd_satuan"],
-                      //     "qty": item["qty"],
-                      //   };
-                      // }).toList();
-
-                      // Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (context) => SelectTemplateCart(
-                      //       selectedItems: selectedItems,
-                      //       token: userProvider.user!.mobToken,
-                      //     ),
+                      Clipboard.setData(ClipboardData(
+                          text:
+                              'lirik sumbawa : ${modifiedTitle}, \n\n lirik indo : ${indo}'));
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(
+                      //     content: Text('Data disalin ke clipboard'),
                       //   ),
                       // );
                     },
@@ -357,7 +354,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       width: 46,
                       height: 46,
                       child: Icon(
-                        Icons.download,
+                        Icons.copy,
                         color: Color(0xFF9CCC65),
                       ),
                     ),
@@ -367,19 +364,25 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                   InkWell(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => QuizScreen(),
-                      //   ),
-                      // );
-                      // if (_jenis_user == 1) {
-                      //   checkout();
-                      // } else if (_jenis_user == 2) {
-                      //   approver();
-                      // } else if (_jenis_user == 3) {
-                      //   drafter();
-                      // }
+                      // URL video YouTube yang ingin dibuka
+                      String youtubeVideoUrl =
+                          "https://www.youtube.com/watch?v=${link}";
+
+                      // Mengecek apakah URL bisa dibuka
+                      canLaunch(youtubeVideoUrl).then((canOpen) {
+                        if (canOpen) {
+                          // Membuka URL di aplikasi YouTube
+                          launch(youtubeVideoUrl);
+                        } else {
+                          // Menampilkan pesan jika tidak dapat membuka URL
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content:
+                                  Text('Tidak dapat membuka video YouTube.'),
+                            ),
+                          );
+                        }
+                      });
                     },
                     child: Container(
                       // frame60zo1 (175:306)
