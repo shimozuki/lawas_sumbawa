@@ -233,7 +233,7 @@ class _UploadState extends State<Upload> {
                                       const EdgeInsets.fromLTRB(0, 0, 0, 5),
                                   child: TextFormField(
                                     decoration: const InputDecoration.collapsed(
-                                      hintText: "Nama",
+                                      hintText: "Judul Lawas",
                                     ),
                                     validator: (value) {
                                       if (value == null ||
@@ -457,7 +457,7 @@ class _UploadState extends State<Upload> {
                                   child: Text(
                                     _selectedFilePath != null
                                         ? _selectedFilePath!
-                                        : "Choose a Audio",
+                                        : "Pilih Audio",
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
@@ -492,7 +492,7 @@ class _UploadState extends State<Upload> {
                                   child: Text(
                                     _selectedFilePath != null
                                         ? _selectedFilePath!
-                                        : "Choose a Word or PDF file",
+                                        : "Pilih File Excel",
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
