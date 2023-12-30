@@ -66,7 +66,7 @@ class _DetailsPageState extends State<DetailsPage> {
       if (detailData.audio.isNotEmpty) {
         audioPlayer.open(
           Audio.network(
-              'https://lombokfuntransport.com/lawas_backoffice/${detailData.audio}'),
+              'https://lawassumbawa.com/${detailData.audio}'),
           autoStart: false,
           showNotification: true,
         );

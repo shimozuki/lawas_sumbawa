@@ -5,7 +5,7 @@ class DetailController {
   final Dio _dio = Dio();
 
   Future<DetaillawasModel> fetchDataById(int id) async {
-    final String apiUrl = 'https://lombokfuntransport.com/lawas_backoffice/api/get-byid';
+    final String apiUrl = 'https://lawassumbawa.com/api/get-byid';
 
     try {
       final response = await _dio.post(

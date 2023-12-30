@@ -42,7 +42,7 @@ class _LawasaheratState extends State<Lawasaherat> {
                           borderRadius: BorderRadius.all(Radius.circular(5)),
                           child: Container(
                             child: Image.network(
-                                'https://lombokfuntransport.com/lawas_backoffice/${model.image}'),
+                                'https://lawassumbawa.com/${model.image}'),
                           ),
                         ),
                       );
@@ -84,7 +84,7 @@ class _LawasaheratState extends State<Lawasaherat> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(8)),
                                     child: Image.network(
-                                      'https://lombokfuntransport.com/lawas_backoffice/${model.image}',
+                                      'https://lawassumbawa.com/${model.image}',
                                       width: 70,
                                     ),),
                                 SizedBox(

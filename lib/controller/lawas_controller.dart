@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:lawas_sumbawa/model/lawas_model.dart';
 
 class LawasController {
-  static const String apiUrl = 'https://lombokfuntransport.com/lawas_backoffice/api/get-all';
+  static const String apiUrl = 'https://lawassumbawa.com/api/get-all';
 
   Future<List<LawasModel>> fetchData() async {
     final response = await http.get(Uri.parse(apiUrl));

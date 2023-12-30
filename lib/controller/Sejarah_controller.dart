@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:lawas_sumbawa/model/about_model.dart';
 
 class SejarahController {
-  static const String apiUrl = 'https://lombokfuntransport.com/lawas_backoffice/api/getSejarah';
+  static const String apiUrl = 'https://lawassumbawa.com/api/getSejarah';
 
   Future<AboutModel> fetchAboutData() async {
     final response = await http.get(Uri.parse(apiUrl));

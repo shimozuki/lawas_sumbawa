@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:lawas_sumbawa/model/about_model.dart';
 
 class AboutController {
-  static const String apiUrl = 'https://lombokfuntransport.com/lawas_backoffice/api/getAbout';
+  static const String apiUrl = 'https://lawassumbawa.com/api/getAbout';
 
   Future<AboutModel> fetchAboutData() async {
     final response = await http.get(Uri.parse(apiUrl));
