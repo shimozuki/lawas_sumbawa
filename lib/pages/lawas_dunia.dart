@@ -87,7 +87,7 @@ class _DuniaState extends State<Dunia> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(8)),
                                   child: Image.network(
-                                    'https://lawassumbawa.com/model.image}',
+                                    'https://lawassumbawa.com/${model.image}',
                                     width: 70,
                                   ),
                                 ),
